@@ -1,12 +1,14 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from category.models import Category
+
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True)
     amount = models.IntegerField()
     rating = models.PositiveIntegerField()
-
 
     class Meta:
         ordering = ('rating',)
